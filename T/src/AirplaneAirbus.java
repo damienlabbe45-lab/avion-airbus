@@ -1,5 +1,7 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner; 
+import java.util.List;
+import java.util.Arrays;
 
 public class AirplaneAirbus {
 	
@@ -11,6 +13,7 @@ public class AirplaneAirbus {
 	
 	public static String InputPhase(Scanner input) {
 		String typeproduct ="";
+		System.out.println("Veillez mettre la phase");
 		while(!Arrays.asList("etude de faisabilite","conception","definition",
 				"construction","en service","cloture").contains(typeproduct)) {
 			typeproduct =input.next().toLowerCase();
@@ -25,11 +28,11 @@ public class AirplaneAirbus {
 		}
 		return programm;
 	}
-	public static List<String[4]> AirplaneCreate(Scanner input){
-		List<String[4]> airplane = new ArrayList<>;
+	public static List<String[]> AirplaneCreate(Scanner input){
+		List<String[]> airplane = new ArrayList<>();
 		while(!input.next().equalsIgnoreCase("oui")) {
 			
-			airplane.add(new String(InputInt(input),InputProgramm(input),InputPhase(input),input.next()));
+			airplane.add(new String[](InputInt(input),InputProgramm(input),InputPhase(input),input.next()));
 			
 		}
 		return  airplane;
