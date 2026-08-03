@@ -45,7 +45,9 @@ public class AirplaneAirbus {
 	}
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-
+		AirplaneCreate(input);
+		
+		input.close();
 	}
 
 }
