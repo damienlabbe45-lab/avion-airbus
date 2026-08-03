@@ -43,10 +43,15 @@ public class AirplaneAirbus {
 		}
 		return  airplane;
 	}
+	
+	public static void print(List<String[]> airplanes) {
+		System.out.println(airplanes.toString());
+	}
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
-		AirplaneCreate(input);
+		List<String[]> airplanes = AirplaneCreate(input);
+		print(airplanes);
 		
 		input.close();
 	}
