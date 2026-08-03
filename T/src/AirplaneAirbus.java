@@ -23,16 +23,22 @@ public class AirplaneAirbus {
 	
 	public static String InputProgramm(Scanner input) {
 		String programm = "";
+		System.out.println("Veillez mettre le proggramme");
 		while(!programm.matches("[A-Z][0-9]+[A-Z]?")) {
 			programm = input.next();
 		}
 		return programm;
 	}
+	public static String InputType(Scanner input) {
+		System.out.println("veillez mettre le type");
+		return input.next();
+	}
+	
 	public static List<String[]> AirplaneCreate(Scanner input){
 		List<String[]> airplane = new ArrayList<>();
 		while(!input.next().equalsIgnoreCase("oui")) {
 			
-			airplane.add(new String[](InputInt(input),InputProgramm(input),InputPhase(input),input.next()));
+			airplane.add(new String[](InputInt(input),InputProgramm(input),InputPhase(input),InputType(input)));
 			
 		}
 		return  airplane;
