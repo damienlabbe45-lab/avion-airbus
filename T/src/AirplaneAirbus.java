@@ -16,7 +16,7 @@ public class AirplaneAirbus {
 		System.out.println("Veillez mettre la phase");
 		while(!Arrays.asList("etude de faisabilite","conception","definition",
 				"construction","en service","cloture").contains(typeproduct)) {
-			typeproduct =input.next().toLowerCase();
+			typeproduct =input.nextLine().toLowerCase();
 		}
 		return typeproduct;
 	}
@@ -31,7 +31,7 @@ public class AirplaneAirbus {
 	}
 	public static String InputType(Scanner input) {
 		System.out.println("veillez mettre le type");
-		return input.next();
+		return input.nextLine();
 	}
 	
 	public static List<String[]> AirplaneCreate(Scanner input){
@@ -47,12 +47,24 @@ public class AirplaneAirbus {
 	public static void print(List<String[]> airplanes) {
 		System.out.println(Arrays.deepToString(airplanes.toArray()));
 	}
+	
+	public static void findAirplane(Scanner input,List<String[]> airplanes) {
+		System.out.println("veillez mettre un mot");
+		String word  = input.nextLine().toLowerCase();
+		List<String[]> results = new ArrayList<>();
+		for(String[] airplane:airplanes) {
+			if(airplane[0].contains(word) || airplane[1].contains(word.toUpperCase()) || airplane[2].contains(word) || airplane[3].contains(word)) {
+				results.add(airplane);
+			}
+		}
+		print(results);
+	}
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
 		List<String[]> airplanes = AirplaneCreate(input);
 		print(airplanes);
-		
+		findAirplane(input,airplanes);
 		input.close();
 	}
 
