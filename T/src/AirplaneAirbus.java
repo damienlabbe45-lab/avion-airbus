@@ -37,8 +37,8 @@ public class AirplaneAirbus {
 	public static List<String[]> AirplaneCreate(Scanner input){
 		List<String[]> airplane = new ArrayList<>();
 		while(!input.next().equalsIgnoreCase("oui")) {
-			
-			airplane.add(new String[](InputInt(input),InputProgramm(input),InputPhase(input),InputType(input)));
+			String [] plane = (InputInt(input),InputProgramm(input),InputPhase(input),InputType(input));
+			airplane.add(plane);
 			
 		}
 		return  airplane;
