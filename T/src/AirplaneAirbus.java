@@ -36,10 +36,11 @@ public class AirplaneAirbus {
 	
 	public static List<String[]> AirplaneCreate(Scanner input){
 		List<String[]> airplane = new ArrayList<>();
+		System.out.println("Voulez vous créé un avion?");
 		while(!input.next().equalsIgnoreCase("oui")) {
-			String [] plane = (InputInt(input),InputProgramm(input),InputPhase(input),InputType(input));
+			String [] plane = {InputInt(input),InputProgramm(input),InputPhase(input),InputType(input)};
 			airplane.add(plane);
-			
+			System.out.println("voulez vous oui ou non créé un nouveau avion");
 		}
 		return  airplane;
 	}
