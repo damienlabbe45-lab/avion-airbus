@@ -7,8 +7,8 @@ public class AirplaneAirbus {
 	
 	public static String InputInt(Scanner input) {
 		System.out.println("veillez mettre un identifiant");
-		while(!input.hasNextInt()) input.next();
-		return input.next();
+		while(!input.hasNextInt()) input.nextLine();
+		return input.nextLine();
 	}
 	
 	public static String InputPhase(Scanner input) {
@@ -25,7 +25,7 @@ public class AirplaneAirbus {
 		String programm = "";
 		System.out.println("Veillez mettre le proggramme");
 		while(!programm.matches("[A-Z]\\d+[A-Z]?")) {
-			programm = input.next();
+			programm = input.nextLine();
 		}
 		return programm;
 	}
@@ -43,7 +43,7 @@ public class AirplaneAirbus {
 	public static HashMap<List<String>,List<String[]>> AirplaneCreate(Scanner input){
 		HashMap<List<String>,List<String[]>> airplane = new HashMap<>();
 		System.out.println("Voulez vous créé un avion?");
-		while(input.next().equalsIgnoreCase("oui")) {
+		while(input.nextLine().equalsIgnoreCase("oui")) {
 			airplane.put(Airplane(input), AirplanePiece.piecesCreate(input));
 			System.out.println("voulez vous oui ou non créé un nouveau avion");
 		}
@@ -75,7 +75,7 @@ public class AirplaneAirbus {
 				results.put(airplane,airplanes.get(airplane));
 			}
 		}
-		if (results.isEmpty())print(results);
+		if (!results.isEmpty())print(results);
 		else System.out.println("aucun résultat");
 	}
 	
