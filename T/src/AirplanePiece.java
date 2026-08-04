@@ -36,6 +36,15 @@ public class AirplanePiece {
 		return  pieces;
 	}
 	
+	public static void printname(List<String[]> pieces) {
+		System.out.println("noms");
+		for(String[] piece: pieces) {
+			System.out.println(piece[0]);
+		}
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 	}
