@@ -44,7 +44,10 @@ public class AirplaneAirbus {
 		HashMap<List<String>,List<String[]>> airplane = new HashMap<>();
 		System.out.println("Voulez vous créé un avion?");
 		while(input.nextLine().equalsIgnoreCase("oui")) {
-			airplane.put(Airplane(input), AirplanePiece.piecesCreate(input));
+			List<String> airplanes = Airplane(input);
+			List<String[]> pieces = AirplanePiece.piecesCreate(input);
+			airplane.put(airplanes, pieces);
+			airplane.replace(airplanes, AirplanePiece.piecesRemove(input,pieces));
 			System.out.println("voulez vous oui ou non créé un nouveau avion");
 		}
 		return  airplane;
@@ -59,10 +62,12 @@ public class AirplaneAirbus {
 	//	System.out.println(Arrays.deepToString(airplanes.toArray()));
 	//}
 	
-	public static void print(HashMap<List<String>,List<String[]>> airplanes) {
+	public static void print(HashMap<List<String>,List<String[]>> airplanes, Scanner input) {
+		boolean isAll = input.nextLine().equalsIgnoreCase("oui");
 		airplanes.forEach(( airplane, pieces) -> {
 			printairplane(airplane);
-			AirplanePiece.printpiece(pieces);
+			if(isAll)AirplanePiece.printpiece(pieces);
+			else AirplanePiece.printname(pieces);
 		});
 	}
 	
@@ -75,7 +80,7 @@ public class AirplaneAirbus {
 				results.put(airplane,airplanes.get(airplane));
 			}
 		}
-		if (!results.isEmpty())print(results);
+		if (!results.isEmpty())print(results, input);
 		else System.out.println("aucun résultat");
 	}
 	
@@ -83,7 +88,7 @@ public class AirplaneAirbus {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
 		HashMap<List<String>,List<String[]>> airplanes = AirplaneCreate(input);
-		print(airplanes);
+		print(airplanes, input);
 		findAirplane(input,airplanes);
 		input.close();
 	}
