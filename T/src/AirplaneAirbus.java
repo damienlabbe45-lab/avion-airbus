@@ -24,7 +24,7 @@ public class AirplaneAirbus {
 	public static String InputProgramm(Scanner input) {
 		String programm = "";
 		System.out.println("Veillez mettre le proggramme");
-		while(!programm.matches("[A-Z][0-9]+[A-Z]?")) {
+		while(!programm.matches("[A-Z]\\d+[A-Z]?")) {
 			programm = input.next();
 		}
 		return programm;
