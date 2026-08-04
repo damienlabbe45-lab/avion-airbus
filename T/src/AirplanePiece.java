@@ -43,7 +43,14 @@ public class AirplanePiece {
 		}
 	}
 	
-	
+	public static List<String[]> piecesRemove(Scanner input,List<String[]> pieces){
+		System.out.println("Voulez vous supprimmer une pièce d'avion?");
+		while(input.nextLine().equalsIgnoreCase("oui")) {
+			pieces.remove(new String[] {InputName(input),InputDouble(input),InputCat(input)});
+			System.out.println("voulez vous oui ou non supprimmer une nouvelle pièce d'avion");
+		}
+		return  pieces;
+	}
 	
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
