@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 import java.util.Scanner; 
 import java.util.List;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class AirplaneAirbus {
 	
@@ -35,43 +35,55 @@ public class AirplaneAirbus {
 		return input.nextLine();
 	}
 	
-	public static List<String[]> AirplaneCreate(Scanner input){
-		List<String[]> airplane = new ArrayList<>();
+	public static List<String> Airplane(Scanner input) {
+		String[] airplane= {InputInt(input),InputProgramm(input),InputPhase(input),InputType(input)};
+		return Arrays.asList(airplane);
+	}
+	
+	public static HashMap<List<String>,List<String[]>> AirplaneCreate(Scanner input){
+		HashMap<List<String>,List<String[]>> airplane = new HashMap<>();
 		System.out.println("Voulez vous créé un avion?");
 		while(input.next().equalsIgnoreCase("oui")) {
-			airplane.add( new String[] {InputInt(input),InputProgramm(input),InputPhase(input),InputType(input)});
+			airplane.put(Airplane(input), AirplanePiece.piecesCreate(input));
 			System.out.println("voulez vous oui ou non créé un nouveau avion");
 		}
 		return  airplane;
 	}
 	
-	public static void printairplane(List<String[]> airplanes) {
+	public static void printairplane(List<String> airplanes) {
 		System.out.println("[Identifiant,Programme,Phase, Type]");
 		System.out.println(Arrays.deepToString(airplanes.toArray()));
 	}
 	
-	public static void print2(List<String[]> airplanes) {
-		System.out.println(Arrays.deepToString(airplanes.toArray()));
+	//public static void print2(List<String> airplanes) {
+	//	System.out.println(Arrays.deepToString(airplanes.toArray()));
+	//}
+	
+	public static void print(HashMap<List<String>,List<String[]>> airplanes) {
+		airplanes.forEach(( airplane, pieces) -> {
+			printairplane(airplane);
+			AirplanePiece.printpiece(pieces);
+		});
 	}
 	
-	public static void findAirplane(Scanner input,List<String[]> airplanes) {
+	public static void findAirplane(Scanner input,HashMap<List<String>,List<String[]>> airplanes) {
 		System.out.println("veillez mettre un mot");
 		String word  = input.nextLine().toLowerCase();
-		List<String[]> results = new ArrayList<>();
-		for(String[] airplane:airplanes) {
-			if(airplane[0].contains(word) || airplane[1].contains(word.toUpperCase()) || airplane[2].contains(word) || airplane[3].contains(word)) {
-				results.add(airplane);
+		HashMap<List<String>,List<String[]>> results = new HashMap<>();
+		for(List<String> airplane:airplanes.keySet()) {
+			if(airplane.get(0).contains(word) || airplane.get(1).contains(word.toUpperCase()) || airplane.get(2).contains(word) || airplane.get(3).contains(word)) {
+				results.put(airplane,airplanes.get(airplane));
 			}
 		}
-		if (results.isEmpty())printairplane(results);
+		if (results.isEmpty())print(results);
 		else System.out.println("aucun résultat");
 	}
 	
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
-		List<String[]> airplanes = AirplaneCreate(input);
-		printairplane(airplanes);
+		HashMap<List<String>,List<String[]>> airplanes = AirplaneCreate(input);
+		print(airplanes);
 		findAirplane(input,airplanes);
 		input.close();
 	}
