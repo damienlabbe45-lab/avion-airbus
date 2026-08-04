@@ -29,6 +29,7 @@ public class AirplaneAirbus {
 		}
 		return programm;
 	}
+	
 	public static String InputType(Scanner input) {
 		System.out.println("veillez mettre le type");
 		return input.nextLine();
@@ -65,6 +66,7 @@ public class AirplaneAirbus {
 		if (results.isEmpty())printairplane(results);
 		else System.out.println("aucun résultat");
 	}
+	
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
