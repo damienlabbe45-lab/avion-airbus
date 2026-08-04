@@ -44,7 +44,7 @@ public class AirplaneAirbus {
 		return  airplane;
 	}
 	
-	public static void print(List<String[]> airplanes) {
+	public static void printairplane(List<String[]> airplanes) {
 		System.out.println("[Identifiant,Programme,Phase, Type]");
 		System.out.println(Arrays.deepToString(airplanes.toArray()));
 	}
@@ -62,14 +62,14 @@ public class AirplaneAirbus {
 				results.add(airplane);
 			}
 		}
-		if (results.isEmpty())print(results);
+		if (results.isEmpty())printairplane(results);
 		else System.out.println("aucun résultat");
 	}
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
 		Scanner input = new Scanner(System.in);
 		List<String[]> airplanes = AirplaneCreate(input);
-		print(airplanes);
+		printairplane(airplanes);
 		findAirplane(input,airplanes);
 		input.close();
 	}
