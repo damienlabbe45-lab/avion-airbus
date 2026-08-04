@@ -45,6 +45,7 @@ public class AirplaneAirbus {
 	}
 	
 	public static void print(List<String[]> airplanes) {
+		System.out.println("[Identifiant,Programme,Phase, Type]");
 		System.out.println(Arrays.deepToString(airplanes.toArray()));
 	}
 	
@@ -57,7 +58,8 @@ public class AirplaneAirbus {
 				results.add(airplane);
 			}
 		}
-		print(results);
+		if (results.size()>0)print(results);
+		else System.out.println("aucun résultat");
 	}
 	public static void main(String[] args) {
 		if( args.length > 0) throw new IllegalArgumentException(" pas d'arguments");
