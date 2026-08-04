@@ -49,6 +49,10 @@ public class AirplaneAirbus {
 		System.out.println(Arrays.deepToString(airplanes.toArray()));
 	}
 	
+	public static void print2(List<String[]> airplanes) {
+		System.out.println(Arrays.deepToString(airplanes.toArray()));
+	}
+	
 	public static void findAirplane(Scanner input,List<String[]> airplanes) {
 		System.out.println("veillez mettre un mot");
 		String word  = input.nextLine().toLowerCase();
