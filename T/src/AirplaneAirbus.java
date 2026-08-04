@@ -6,14 +6,14 @@ import java.util.HashMap;
 public class AirplaneAirbus {
 	
 	public static String InputInt(Scanner input) {
-		System.out.println("veillez mettre un identifiant");
+		System.out.println("veillez mettre un identifiant:");
 		while(!input.hasNextInt()) input.nextLine();
 		return input.nextLine();
 	}
 	
 	public static String InputPhase(Scanner input) {
 		String typeproduct ="";
-		System.out.println("Veillez mettre la phase");
+		System.out.println("Veillez mettre la phase:");
 		while(!Arrays.asList("etude de faisabilite","conception","definition",
 				"construction","en service","cloture").contains(typeproduct)) {
 			typeproduct =input.nextLine().toLowerCase();
@@ -23,7 +23,7 @@ public class AirplaneAirbus {
 	
 	public static String InputProgramm(Scanner input) {
 		String programm = "";
-		System.out.println("Veillez mettre le proggramme");
+		System.out.println("Veillez mettre le proggramme:");
 		while(!programm.matches("[A-Z]\\d+[A-Z]?")) {
 			programm = input.nextLine();
 		}
@@ -31,7 +31,7 @@ public class AirplaneAirbus {
 	}
 	
 	public static String InputType(Scanner input) {
-		System.out.println("veillez mettre le type");
+		System.out.println("veillez mettre le type:");
 		return input.nextLine();
 	}
 	
@@ -48,7 +48,7 @@ public class AirplaneAirbus {
 			List<String[]> pieces = AirplanePiece.piecesCreate(input);
 			airplane.put(airplanes, pieces);
 			airplane.replace(airplanes, AirplanePiece.piecesRemove(input,pieces));
-			System.out.println("voulez vous oui ou non créé un nouveau avion");
+			System.out.println("voulez vous oui ou non créé un nouveau avion?");
 		}
 		return  airplane;
 	}
@@ -63,6 +63,7 @@ public class AirplaneAirbus {
 	//}
 	
 	public static void print(HashMap<List<String>,List<String[]>> airplanes, Scanner input) {
+		System.out.println("voulez-vous voir toutes les infos des pièces d'avion oui ou  non?");
 		boolean isAll = input.nextLine().equalsIgnoreCase("oui");
 		airplanes.forEach(( airplane, pieces) -> {
 			printairplane(airplane);
@@ -72,11 +73,12 @@ public class AirplaneAirbus {
 	}
 	
 	public static void findAirplane(Scanner input,HashMap<List<String>,List<String[]>> airplanes) {
-		System.out.println("veillez mettre un mot");
+		System.out.println("veillez mettre un mot!");
 		String word  = input.nextLine().toLowerCase();
 		HashMap<List<String>,List<String[]>> results = new HashMap<>();
 		for(List<String> airplane:airplanes.keySet()) {
-			if(airplane.get(0).contains(word) || airplane.get(1).contains(word.toUpperCase()) || airplane.get(2).contains(word) || airplane.get(3).contains(word)) {
+			if(airplane.get(0).contains(word) || airplane.get(1).contains(word.toUpperCase()) || 
+					airplane.get(2).contains(word) || airplane.get(3).contains(word)) {
 				results.put(airplane,airplanes.get(airplane));
 			}
 		}
