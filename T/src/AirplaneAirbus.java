@@ -65,8 +65,8 @@ public class AirplaneAirbus {
 	public static void print(HashMap<List<String>,List<String[]>> airplanes, Scanner input) {
 		System.out.println("voulez-vous voir toutes les infos des pièces d'avion oui ou  non?");
 		boolean isAll = input.nextLine().equalsIgnoreCase("oui");
-		airplanes.forEach(( airplane, pieces) -> {
-			printairplane(airplane);
+		airplanes.forEach(( airplane, pieces) -> {//-> utilisation de lambda dans la boucle for. le 1er reçoit la 
+			printairplane(airplane);//clé et le se la valeur.
 			if(isAll)AirplanePiece.printpiece(pieces);
 			else AirplanePiece.printname(pieces);
 		});
