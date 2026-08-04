@@ -11,18 +11,18 @@ public class AirplanePiece {
 	}
 	
 	public static String InputDouble(Scanner input) {
-		System.out.println("veillez mettre un prix");
+		System.out.println("veillez mettre un prix:");
 		while(!input.hasNextDouble()) input.nextLine();
 		return input.nextLine();
 	}
 	
 	public static String InputName(Scanner input) {
-		System.out.println("veillez mettre le nom de la piece");
+		System.out.println("veillez mettre le nom de la piece:");
 		return input.nextLine();
 	}
 	
 	public static String InputCat(Scanner input) {
-		System.out.println("veillez mettre la categorie");
+		System.out.println("veillez mettre la categorie:");
 		return input.nextLine();
 	}
 	
@@ -45,7 +45,7 @@ public class AirplanePiece {
 	
 	public static List<String[]> piecesRemove(Scanner input,List<String[]> pieces){
 		System.out.println("Voulez vous supprimmer une pièce d'avion?");
-		while(input.nextLine().equalsIgnoreCase("oui")) {
+		while(input.nextLine().equalsIgnoreCase("oui")) {//supprimme un élément tel les conditions. utilise un lambda
 			pieces.removeIf(piece-> piece[0].equalsIgnoreCase(InputName(input)) && 
 					piece[1].equalsIgnoreCase(InputDouble(input)) && piece[2].equalsIgnoreCase(InputCat(input)));
 			System.out.println("voulez vous oui ou non supprimmer une nouvelle pièce d'avion");
