@@ -58,7 +58,7 @@ public class AirplaneAirbus {
 				results.add(airplane);
 			}
 		}
-		if (results.size()>0)print(results);
+		if (results.isEmpty())print(results);
 		else System.out.println("aucun résultat");
 	}
 	public static void main(String[] args) {
