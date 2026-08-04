@@ -46,7 +46,8 @@ public class AirplanePiece {
 	public static List<String[]> piecesRemove(Scanner input,List<String[]> pieces){
 		System.out.println("Voulez vous supprimmer une pièce d'avion?");
 		while(input.nextLine().equalsIgnoreCase("oui")) {
-			pieces.remove(new String[] {InputName(input),InputDouble(input),InputCat(input)});
+			pieces.removeIf(piece-> piece[0].equalsIgnoreCase(InputName(input)) && 
+					piece[1].equalsIgnoreCase(InputDouble(input)) && piece[2].equalsIgnoreCase(InputCat(input)));
 			System.out.println("voulez vous oui ou non supprimmer une nouvelle pièce d'avion");
 		}
 		return  pieces;
